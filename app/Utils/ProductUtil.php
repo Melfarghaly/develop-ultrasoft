@@ -1227,6 +1227,12 @@ class ProductUtil extends Util
             }
 
             $purchase_line->quantity = $new_quantity;
+            //construction module
+            $purchase_line->description = $data['description'] ?? null;
+            $purchase_line->implementation_rate = $data['implementation_rate'] ?? null;
+            $purchase_line->unit_text = $data['unit_text'] ?? null;
+            //end of construction module
+
             $purchase_line->pp_without_discount = ($this->num_uf($data['pp_without_discount'], $currency_details) * $exchange_rate) / $multiplier;
             $purchase_line->discount_percent = $this->num_uf($data['discount_percent'], $currency_details);
             $purchase_line->purchase_price = ($this->num_uf($data['purchase_price'], $currency_details) * $exchange_rate) / $multiplier;

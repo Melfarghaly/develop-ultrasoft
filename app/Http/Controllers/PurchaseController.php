@@ -1167,7 +1167,22 @@ class PurchaseController extends Controller
                             ->get();
 
                 $last_purchase_line = $this->getLastPurchaseLine($variation_id, $location_id, $supplier_id);
-
+                if($request->input('is_work_certificate')==1){ //for construction module
+                    return view('constructions::work-certificates.partials.purchase_entry_row')
+                    ->with(compact(
+                        'product',
+                        'variations',
+                        'row_count',
+                        'variation_id',
+                        'taxes',
+                        'currency_details',
+                        'hide_tax',
+                        'sub_units',
+                        'is_purchase_order',
+                        'type',
+                        'last_purchase_line'
+                    ));
+                }
                 return view('purchase.partials.purchase_entry_row')
                     ->with(compact(
                         'product',

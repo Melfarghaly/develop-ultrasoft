@@ -91,6 +91,7 @@ class DataController extends ZatcaInvoiceController
         $is_zatca_enabled = (bool) $module_util->hasThePermissionInSubscription($business_id, 'ZatcaIntegrationKsa');
 
         if ($is_zatca_enabled  && auth()->user()->can('ZatcaIntegrationKsa.access_zatca_module')) {
+           
             Menu::modify('admin-sidebar-menu', function ($menu) {
                 $menu->url(
                     action([\Modules\ZatcaIntegrationKsa\Http\Controllers\DashBoardController::class, 'index']),
